@@ -1,20 +1,43 @@
 <% provide(:title, "All") %>
 
-<div>
+<div class="center jumbotron">
+  <h1>Anchor Eco System</h1>
+  <p>このシステムではお酒の種類や場所を検索することができます</p>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
   <table class="table table-bordered table-condensed user-table">
-    <tr>
-      <td></td>
-      <td>名前</td>
-      <td>価格</td>
-      <td>種類</td>
-      <td>特徴</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= @alchols.name %></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    <thead>
+      <tr>
+        <td>写真</td>
+        <td>名前</td>
+        <td>価格</td>
+        <td>種類</td>
+        <td>特徴</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+     <% @alchols.each do |alchol| %>
+      <tr>
+         <td>
+           <% if alchol.image? %>  
+            <%= image_tag alchol.image.thumb.url %>
+          <% end %>
+         </td>
+          
+          <td><%= alchol.name %></td>
+          <td><%= alchol.price %></td>
+          <td><%= alchol.kind %></td>
+          <td><%= alchol.character %></td>
+          <td><%= link_to "編集", edit_alchol_path(alchol), class: "btn btn-primary" %></td>
+          <td><%= link_to "削除", alchol, method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
+                class: "btn btn-danger" %>
+          </td>
+      </tr>
+      <% end %>
+
+    
   </table>
 </div>

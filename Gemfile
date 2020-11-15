@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '~> 5.1.6'
+gem 'carrierwave'
+gem 'mini_magick' #画面のリサイズ
 gem 'bootstrap-sass'
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'

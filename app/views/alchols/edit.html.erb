@@ -1,18 +1,15 @@
-<% provide(:title, 'new') %>
-<h1>お酒登録</h1>
+<% provide(:title, "Edit") %>
+<h1>ユーザー情報の更新</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @alchol, local: true) do |f| %>
-    <%= render 'shared/error_messages' %>
-    
-    　<%= f.label :image, class: "label-new" %>
-    　<%= f.file_field :image %>
-    　
-      <%= f.label :name, class: "label-new"%>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.label :name, class: "label-edit" %>
       <%= f.text_field :name, class: "form-control" %>
-
-      <%= f.label :price, class: "label-new" %>
+      
+      <%= f.label :price, class: "label-edit" %>
       <%= f.text_field :price, class: "form-control" %>
       
       <%= f.label :kind, class: "label-new" %>
@@ -21,7 +18,8 @@
       <%= f.label :character, class: "label-new" %>
       <%= f.text_field :character, class: "form-control" %>
 
-      <%= f.submit "新規登録", class: "btn btn-primary btn-block btn-new-alchol" %>
+      
+      <%= f.submit  "更新", class: "btn btn-primary btn-block btn-alchol-edit" %>
     <% end %>
   </div>
 </div>
