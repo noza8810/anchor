@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails',        '~> 5.1.6'
 gem 'carrierwave'
 gem 'mini_magick' #画面のリサイズ
+gem 'fog-aws' #ファイルの保存先を外部のストレージする際にサポートしてくれるgemになります。
+gem 'dotenv-rails' #環境変数を管理してくれる
+gem 'rails-i18n'
 gem 'bootstrap-sass'
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'

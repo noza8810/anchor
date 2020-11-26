@@ -9,7 +9,9 @@ class AlcholsController < ApplicationController
   end
   
   def index
-    @alchols = Alchol.all
+    # @alchols = Alchol.all
+    @search_params = alchol_search_params
+    @alchols = Alchol.search(@search_params)
   end
   
   def create
@@ -44,9 +46,14 @@ class AlcholsController < ApplicationController
     redirect_to alchols_url
   end
   
+  
   private
 
     def alchol_params
-      params.require(:alchol).permit(:name, :price, :kind, :image, :character)
+      params.require(:alchol).permit(:name, :price, :kind, :image, :character, :placephoto)
+    end
+    
+    def alchol_search_params
+      params.fetch(:search, {}).permit(:name, :price, :image, :character, :kind, :placephoto)
     end
 end

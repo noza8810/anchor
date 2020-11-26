@@ -5,6 +5,17 @@
   <p>このシステムではお酒の種類や場所を検索することができます</p>
 </div>
 
+
+<div class="search">
+  <h2>Alcohol Searth</h2>
+  <%= form_with(scope: :search, url: alchols_path, method: :get, local: true, class:"search_form") do |f| %>
+    <%= f.label(:name, '名前') %>
+    <%= f.text_field :name %>
+    <%= f.submit('検索') %>
+    
+  <% end %>
+</div>
+  
 <div class="col-md-10 col-md-offset-1">
   <table class="table table-bordered table-condensed user-table">
     <thead>
@@ -12,8 +23,10 @@
         <td>写真</td>
         <td>名前</td>
         <td>価格</td>
+        <td>場所</td>
         <td>種類</td>
         <td>特徴</td>
+        
         <td></td>
         <td></td>
       </tr>
@@ -21,13 +34,20 @@
      <% @alchols.each do |alchol| %>
       <tr>
          <td>
-           <% if alchol.image? %>  
-            <%= image_tag alchol.image.thumb.url %>
-          <% end %>
+           <%=  link_to alchol.image.url, 'data-lightbox': alchol.image do %>
+             <%= image_tag alchol.image.thumb.url if alchol.image? %>
+           <% end %>
+          
          </td>
           
           <td><%= alchol.name %></td>
           <td><%= alchol.price %></td>
+          <td>
+           <%=  link_to alchol.placephoto.url, 'data-lightbox': alchol.placephoto do %>
+             <%= image_tag alchol.placephoto.thumb.url if alchol.placephoto? %>
+           <% end %>
+          
+         </td>
           <td><%= alchol.kind %></td>
           <td><%= alchol.character %></td>
           <td><%= link_to "編集", edit_alchol_path(alchol), class: "btn btn-primary" %></td>
